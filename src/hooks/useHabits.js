@@ -2,19 +2,36 @@ import { useLocalStorage } from "./useLocalStorage"
 import { sampleHabits } from "@/data/sampleHabits"
 import { getTodayDate } from "@/utils/date"
 
-export function useHabits() {
-  const [habits, setHabits] = useLocalStorage("habits", sampleHabits)
+function normalizeHabit(habit) {
+  return {
+    id: habit.id ?? crypto.randomUUID(),
+    title: habit.title ?? "",
+    category: habit.category ?? "General",
+    frequency: habit.frequency ?? "daily",
+    daysOfWeek: Array.isArray(habit.daysOfWeek) ? habit.daysOfWeek : [],
+    createdAt: habit.createdAt ?? getTodayDate(),
+    completedDates: Array.isArray(habit.completedDates) ? habit.completedDates : [],
+  }
+}
 
-  function addHabit(title, category) {
+export function useHabits() {
+  const [habits, setHabits] = useLocalStorage(
+    "habits",
+    sampleHabits.map(normalizeHabit)
+  )
+
+  function addHabit({ title, category, frequency, daysOfWeek }) {
     const newHabit = {
       id: crypto.randomUUID(),
       title,
       category,
+      frequency,
+      daysOfWeek,
       createdAt: getTodayDate(),
       completedDates: [],
     }
 
-    setHabits((prev) => [newHabit, ...prev])
+    setHabits((prev) => [newHabit, ...prev.map(normalizeHabit)])
   }
 
   function deleteHabit(id) {
@@ -26,22 +43,23 @@ export function useHabits() {
 
     setHabits((prev) =>
       prev.map((habit) => {
-        if (habit.id !== id) return habit
+        const safeHabit = normalizeHabit(habit)
+        if (safeHabit.id !== id) return safeHabit
 
-        const alreadyCompleted = habit.completedDates.includes(today)
+        const alreadyCompleted = safeHabit.completedDates.includes(today)
 
         return {
-          ...habit,
+          ...safeHabit,
           completedDates: alreadyCompleted
-            ? habit.completedDates.filter((date) => date !== today)
-            : [...habit.completedDates, today],
+            ? safeHabit.completedDates.filter((date) => date !== today)
+            : [...safeHabit.completedDates, today].sort(),
         }
       })
     )
   }
 
   return {
-    habits,
+    habits: habits.map(normalizeHabit),
     addHabit,
     deleteHabit,
     toggleHabitCompletion,
