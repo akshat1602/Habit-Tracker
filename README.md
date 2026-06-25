@@ -1,28 +1,41 @@
 # Habit Tracker
 
-A modern React habit tracker for building consistency, tracking streaks, and reviewing weekly progress.
+A modern habit tracking web app built with React, Vite, Tailwind CSS, and shadcn/ui to help users stay consistent, build streaks, and review weekly progress.
 
 ## Live Demo
 
-[Open Live App](https://akshat1602.github.io/Habit-Tracker/)
+[View Live App](https://akshat1602.github.io/Habit-Tracker/)
 
 ## Overview
 
-Habit Tracker is a productivity-focused web app built with React, Vite, Tailwind CSS, and shadcn/ui. It helps users create habits, mark daily completion, track streaks, filter due tasks, and review weekly consistency through analytics and visual history.
+Habit Tracker is a responsive productivity app that lets users create habits, mark daily completion, filter tasks, track streaks, and review weekly performance through simple analytics.
 
-This project was built to strengthen React concepts such as component architecture, custom hooks, localStorage persistence, derived state, date-based logic, and reusable UI design.
+This project was built to strengthen React fundamentals and improve practical frontend skills such as component-based architecture, state management, custom hooks, localStorage persistence, derived state, date-based logic, and reusable UI design.
 
 ## Features
 
 - Add and delete habits with category support.
-- Track daily completion with persistent localStorage data.
-- Support daily habits and weekday-based habits.
-- View current streaks for each habit.
-- Filter habits by all, due today, completed, and pending.
-- See a 7-day completion history strip for every habit.
-- View dashboard cards for total habits, due today, completed today, and best streak.
-- Review weekly consistency with a 7-day analytics chart.
-- Responsive UI built with shadcn/ui and Tailwind CSS.
+- Mark habits as completed for the current day.
+- Support daily and specific weekday-based habits.
+- Track current streaks for each habit.
+- Filter habits by All, Due Today, Completed, and Pending.
+- View a 7-day completion history for every habit.
+- See dashboard stats for total habits, due today, completed today, and best streak.
+- Review weekly consistency through a 7-day analytics chart.
+- Persist data with localStorage.
+- Responsive UI for desktop and mobile screens.
+- Icon-only dark mode toggle with persistent theme state.
+- Improved empty state and polished dashboard stat cards.
+
+## Screenshots
+
+Add your final screenshots here after pushing them to the repo.
+
+### Light Mode
+![Habit Tracker Light Mode](./screenshots/light-mode.png)
+
+### Dark Mode
+![Habit Tracker Dark Mode](./screenshots/dark-mode.png)
 
 ## Tech Stack
 
@@ -30,8 +43,9 @@ This project was built to strengthen React concepts such as component architectu
 - Vite
 - Tailwind CSS
 - shadcn/ui
-- date-fns
 - Recharts
+- date-fns
+- Lucide React
 - localStorage
 
 ## Folder Structure
@@ -39,15 +53,18 @@ This project was built to strengthen React concepts such as component architectu
 ```txt
 src/
   components/
+    EmptyState.jsx
     HabitCard.jsx
     HabitFilters.jsx
     HabitForm.jsx
     HabitHistory.jsx
     HabitList.jsx
     HabitStats.jsx
+    ThemeToggle.jsx
   hooks/
     useHabits.js
     useLocalStorage.js
+    useTheme.js
   utils/
     date.js
     habitSchedule.js
@@ -75,27 +92,31 @@ npm run build
 npm run preview
 ```
 
+## How It Works
+
+- Users can create habits with a category and frequency.
+- Habits can be tracked daily or on specific weekdays.
+- Completion status is stored locally in the browser.
+- Streaks and weekly analytics are calculated from saved completion history.
+- The interface supports both light and dark themes for a cleaner user experience.
+
 ## What I Learned
 
-- Managing app state with custom React hooks.
-- Persisting structured data with localStorage.
-- Designing reusable components for forms, lists, filters, and stats.
-- Working with date-based logic for streaks, schedules, and weekly analytics.
-- Building a more product-like frontend instead of a basic CRUD project.
+- Managing React state with reusable custom hooks.
+- Persisting app data using localStorage.
+- Structuring a small project into components, hooks, and utilities.
+- Handling date-based habit scheduling and streak logic.
+- Building a more polished frontend with dark mode, charts, and better UI states.
 
 ## Future Improvements
 
-- Monthly heatmap view.
-- CSV export for habit history.
-- PWA/offline install support.
-- Reminder notifications.
-- Editable habits and richer analytics.
-
-## Screenshots
-
-Add screenshots or a short GIF here after final UI polish so recruiters can understand the project quickly.
+- Edit existing habits.
+- Add monthly heatmap tracking.
+- Export progress data.
+- Add reminders or notifications.
+- Improve analytics with more detailed insights.
 
 ## Author
 
-Akshat  
+**Akshat**  
 GitHub: [@akshat1602](https://github.com/akshat1602)
