@@ -52,9 +52,9 @@ export default function HabitForm({ onAddHabit }) {
   }
 
   return (
-    <Card className="rounded-2xl">
+    <Card className="rounded-2xl border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
       <CardHeader>
-        <CardTitle>Add Habit</CardTitle>
+        <CardTitle className="dark:text-slate-100">Add Habit</CardTitle>
       </CardHeader>
 
       <CardContent>
@@ -63,16 +63,20 @@ export default function HabitForm({ onAddHabit }) {
             placeholder="e.g. Read 20 minutes"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+            className="border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:placeholder:text-slate-500"
           />
 
           <Input
             placeholder="Category (Study, Health, Fitness...)"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
+            className="border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:placeholder:text-slate-500"
           />
 
           <div className="space-y-3">
-            <p className="text-sm font-medium text-slate-700">Frequency</p>
+            <p className="text-sm font-medium text-slate-700 dark:text-slate-300">
+              Frequency
+            </p>
 
             <div className="flex flex-wrap gap-2">
               <Button
@@ -82,6 +86,7 @@ export default function HabitForm({ onAddHabit }) {
                   setFrequency("daily")
                   setDaysOfWeek([])
                 }}
+                className={frequency !== "daily" ? "dark:border-slate-700 dark:text-slate-100 dark:hover:bg-slate-800" : ""}
               >
                 Daily
               </Button>
@@ -90,14 +95,15 @@ export default function HabitForm({ onAddHabit }) {
                 type="button"
                 variant={frequency === "weekly" ? "default" : "outline"}
                 onClick={() => setFrequency("weekly")}
+                className={frequency !== "weekly" ? "dark:border-slate-700 dark:text-slate-100 dark:hover:bg-slate-800" : ""}
               >
                 Specific days
               </Button>
             </div>
 
             {frequency === "weekly" && (
-              <div className="space-y-3 rounded-xl border border-slate-200 p-3">
-                <p className="text-xs text-slate-500">
+              <div className="space-y-3 rounded-xl border border-slate-200 p-3 dark:border-slate-700 dark:bg-slate-950/50">
+                <p className="text-xs text-slate-500 dark:text-slate-400">
                   Choose the weekdays when this habit should appear as due.
                 </p>
 
@@ -105,11 +111,11 @@ export default function HabitForm({ onAddHabit }) {
                   {weekDays.map((day) => (
                     <label
                       key={day.value}
-                      className="flex items-center gap-2 rounded-lg border border-slate-200 px-3 py-2 text-sm"
+                      className="flex items-center gap-2 rounded-lg border border-slate-200 px-3 py-2 text-sm dark:border-slate-700 dark:text-slate-200"
                     >
                       <Checkbox
                         checked={daysOfWeek.includes(day.value)}
-                        onCheckedChange={(checked) => toggleDay(day.value)}
+                        onCheckedChange={() => toggleDay(day.value)}
                       />
                       <span>{day.label}</span>
                     </label>
@@ -118,12 +124,18 @@ export default function HabitForm({ onAddHabit }) {
 
                 <div className="flex flex-wrap gap-2">
                   {daysOfWeek.length === 0 ? (
-                    <Badge variant="secondary">No days selected</Badge>
+                    <Badge variant="secondary" className="dark:bg-slate-800 dark:text-slate-200">
+                      No days selected
+                    </Badge>
                   ) : (
                     weekDays
                       .filter((day) => daysOfWeek.includes(day.value))
                       .map((day) => (
-                        <Badge key={day.value} variant="secondary">
+                        <Badge
+                          key={day.value}
+                          variant="secondary"
+                          className="dark:bg-slate-800 dark:text-slate-200"
+                        >
                           {day.label}
                         </Badge>
                       ))
