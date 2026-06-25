@@ -27,16 +27,6 @@ This project was built to strengthen React fundamentals and improve practical fr
 - Icon-only dark mode toggle with persistent theme state.
 - Improved empty state and polished dashboard stat cards.
 
-## Screenshots
-
-Add your final screenshots here after pushing them to the repo.
-
-### Light Mode
-![Habit Tracker Light Mode](./screenshots/light-mode.png)
-
-### Dark Mode
-![Habit Tracker Dark Mode](./screenshots/dark-mode.png)
-
 ## Tech Stack
 
 - React
