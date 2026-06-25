@@ -100,22 +100,6 @@ npm run preview
 - Streaks and weekly analytics are calculated from saved completion history.
 - The interface supports both light and dark themes for a cleaner user experience.
 
-## What I Learned
-
-- Managing React state with reusable custom hooks.
-- Persisting app data using localStorage.
-- Structuring a small project into components, hooks, and utilities.
-- Handling date-based habit scheduling and streak logic.
-- Building a more polished frontend with dark mode, charts, and better UI states.
-
-## Future Improvements
-
-- Edit existing habits.
-- Add monthly heatmap tracking.
-- Export progress data.
-- Add reminders or notifications.
-- Improve analytics with more detailed insights.
-
 ## Author
 
 **Akshat**  
